@@ -1,0 +1,94 @@
+\documentclass[1Opt]{report}
+\author{Louis Merlin}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\newcommand\eqdef{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily def}}}{=}}}
+
+
+\begin{document}
+
+\title{Information Sciences}
+\maketitle
+
+\tableofcontents
+
+\chapter{Random variables, sources and entropy}
+\section{Random variables}
+
+\paragraph{Single random variable}
+A \textbf{random variable} $X$ is a function $X:\Omega\rightarrow{\mathbb R}$.\\
+In this course, the \textbf{sample space} $\Omega$ is finite.\\
+\begin{itemize}
+  \item all random variables are discrete
+  \item the image $X(\Omega)$ is a finite subset $A\subset{\mathbb R}$
+  \item we are able to assign a probability to every subset (event) of $\Omega$
+\end{itemize}
+To each $x\in A$, we assign a probability $p(x)$.\\
+The function $p:A\rightarrow [0,1]$ is called the \textbf{probability mass
+function} (or \textbf{probability distribution}) of (the random variable) $X$.
+
+\paragraph{Alphabet}
+The \textbf{alphabet} of an event is the set of all of its outcomes.
+
+\paragraph{Law of total probability}
+Given the discrete random variables $X\in{\cal X}$ and $Y\in{\cal Y}$ :
+\[ \forall x\in{\cal X},\quad p_X(x)=\sum_{y\in{\cal Y}}P_{X,Y}(x,y)\]
+$p_X$ (and $p_Y$) is called \textbf{marginal distribution}.
+
+\paragraph{Definition}
+Two random variables $S_1\in {\cal A}_1,\,S_2\in{\cal A}_2$ are \textbf{independent} if
+for all $s_1\in{\cal A}_1$ and all $s_2\in{\cal A}_2$,
+\[ p_{S_1,S_2}(s_1,s_2)=p_{S_1}(s_1)p_{S_2}(s_2)\]
+
+\paragraph{Definition}
+The \textbf{conditional probability} of event $\cal S$ conditioned on event $\cal F$ is
+\[ P({\cal S}|{\cal F})\eqdef\frac{P({\cal F}\cap{\cal S})}{P({\cal F})}\]
+
+\section{Source Model}
+A source is modeled as a random vector, like $(S_1,\ldots),S_n)$. By definition,
+an \textbf{information source} outputs symbols/letters that cannot be predicted
+with certitude.
+
+\section{Source Coding: The Idea, As a start}
+\textbf{Source coding} is about efficient representation using codewords from a
+given alphabet (e.g. binary). We assign a codeword to each valid sequence.
+The length of the codeword is inversely proportional to the probability of
+the corresponding sequence.
+
+\section{Entropy}
+
+\paragraph{Definition}
+Let $S\in{\cal A}$ be a discrete random variable of probability distribution
+$p_S$. The entropy of $S$ is
+\[ H(S):=-\sum_{s\in{\cal A}}{p_S(s)log_2{p_S(s)}}\]
+
+\paragraph{A few facts}
+\begin{itemize}
+  \item The unit of $H(S)$ is the \textit{bit}.
+  \item The entropy of $S$ depends only on $p_S$.
+  \item By convention, if $p_S(s)=0$ for some $s\in{\cal A}$ then
+  \[ p_S(s)log_2\,p_S(s)=0 \]
+  \item Equivalent form:
+  \[ H(S)=\sum_{s\in{\cal A}}=p_S(s)log\frac{1}{p_S(s)}\]
+\end{itemize}
+
+\paragraph{Theorem (Entropy Bounds)}
+Let $S$ be a discrete random variable taking values in $\cal A$, and let
+$D\geq2$ be a positive integer. Then
+\[ 0\leq H_D(S)\leq log_D|{\cal A}| \]
+where $|{\cal A}|$ stands for the cardinality of $\cal A$ and
+\begin{itemize}
+  \item the first $\leq$ holds with equality iff there exists an $s\in{\cal A}$ for
+  which $p_S(s)=1$
+  \item the second $\leq$ holds with equality iff $S$ is uniformly distributed over
+  $\cal A$
+\end{itemize}
+
+\paragraph{Theorem}
+Let $S_1,\ldots,S_n$ be discrete random variables. Then
+\[H(S_1,S_2,\ldots,S_n)\leq H(S_1)+H(S_2)+\ldots+H(S_n)\]
+with equality iff $S_1,\ldots,S_n$ are independent.
+
+\end{document}
